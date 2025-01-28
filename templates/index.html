@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h4>Automobilių lentelė</h4>
+<h4>Naujų automobilių lentelė</h4>
 <form action="" method="get">
     <p><input type="text" name="searchlaukelis"></p>
     <p><input type="submit" value="filtruoti pagal gamintoją"></p>
@@ -15,6 +15,7 @@
         <th>modelis</th>
         <th>spalva</th>
         <th>kaina</th>
+
     </tr>
     {% for automobilis in automobiliai %}
     <tr>

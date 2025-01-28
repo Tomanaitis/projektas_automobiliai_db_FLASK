@@ -1,18 +1,10 @@
-"""
-Visi standartiniai veiksmai su db, prijungsim šablone css
-"""
-
 from models import db, Automobilis
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# fizinės duomenų bazės - db, prijungimas, configas
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///automobiliai.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# paleidžiam db
 
 db.init_app(app)
 with app.app_context():
@@ -58,8 +50,8 @@ def update_car(row_id):
         auto.spalva = spalva
         auto.kaina = price
         db.session.commit()
-        return redirect(url_for("home"))  # nukreipimas į home funkcijos endpointą
-        # return redirect(f"/projektas/{row_id}")  # variantas nukreipimo į vieno projekto rodymą
+        return redirect(url_for("home"))
+
 
 
 @app.route("/automobilis/trynimas/<int:row_id>", methods=["POST"])
@@ -87,6 +79,7 @@ def create_car():
             db.session.add(new_car)
             db.session.commit()
         return redirect(url_for('home'))
+
 
 
 if __name__ == "__main__":
